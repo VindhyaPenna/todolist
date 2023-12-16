@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+        <img src="./rocket.png" alt="">
+        <h1>todo</h1>
+    </div>
+        
+        <div class="header-task">
+            <input id="input-task" type="text"  placeholder="Enter your task here">
+        </div>
+        <div class="priority">
+            <h3>Select the priority of task : </h3> 
+            <input type="radio" name="priority" id="hp" style="display: none;">
+            <input type="radio" name="priority" id="mp" style="display: none;">
+            <input type="radio" name="priority" id="lp" style="display: none;">
+            <button  class="hpbtn" id="Hp">High Priority</button>
+            <button  class="mpbtn" id="Mp">Medium Priority</button>
+            <button  class="lpbtn" id="Lp">Low Priority</button>
+        </div>
+        <div class="addbtndiv">
+            <button id="addbtn" type="submit">Add your task</button>
+        </div>
+        <div class="search-block"><input class="search" placeholder="🔍 Search here"></div>
+    </header>
+
+
+    <main>
+        <div id="no-task-block" class="no-task-block" style="display: flex; flex-direction: column; justify-content: center; margin: 2rem; align-items: center;">
+            <img src="./Clipboard.png" alt="">
+            <h4 style="margin: 5px;font-size: 18px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 100;color: rgb(50, 49, 49);">No tasks here yet</h4>
+        </div>
+        <div id="main"></div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
