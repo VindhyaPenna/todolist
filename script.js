@@ -1,142 +1,124 @@
-const addbtn = document.getElementById("addbtn");
-let arr=[];
-const input = document.getElementById("input-task");
-// console.log(search);
-let Hpbtn = document.getElementById("Hp");
-let Mpbtn = document.getElementById("Mp");
-let Lpbtn = document.getElementById("Lp");
-// console.log(Hpbtn,Lpbtn,Mpbtn);
-const hprad = document.getElementById("hp");
-const mprad = document.getElementById("mp");
-const lprad = document.getElementById("lp");
-// console.log(hprad,mprad,lprad);
-const notask = document.getElementById("no-task-block");
-// console.log(notask);
+
+const body = document.getElementById("body");
+// console.log(body);
 
 
- 
-
-let temp = {};
-let val = "",i=0 ;
-input.addEventListener("input",()=>{
-        val = input.value;  
-    })
-let totaltasks = 0;   
-addbtn.addEventListener("click",(e)=>{
-    e.preventDefault();
-    //functions that should
-    //occur soon after clicking
-    // on add btn
-    if(!(Mpbtn.classList.contains("highlight")||Hpbtn.classList.contains("highlight")||Lpbtn.classList.contains("highlight")))
-    alert("Please select the priority")
-    totaltasks++;
-    arr[i].name = val;
-    console.log(arr);
-    input.value = "";
-    notask.classList.add("no-task-block")
-    //to remove the highlights of 
-    Mpbtn.classList.remove("highlight")
-    Hpbtn.classList.remove("highlight")
-    Lpbtn.classList.remove("highlight")
+let div = document.createElement("div");
+    div.classList.add("notaskdiv")
+    body.appendChild(div);
+    div.innerText = "No Tasks Yet 🧐";
 
 
-    const main = document.getElementById("main");
-    const taskblock = document.createElement("div");
-    const btn = document.createElement("button");
-    const text = document.createElement("div")
-    // del
-    
-    // taskblock.innerText = arr[i].name
-    taskblock.classList.add("taskblock")
-    main.appendChild(taskblock);
-    taskblock.appendChild(text)
-    text.innerText = arr[i].name;
-    text.style.backgroundColor="transparent"
-    text.classList.add("tasktext")
-    taskblock.appendChild(btn);
-    btn.innerHTML = "delete";
-    console.log(main);
-    i++;
+let taskarr = [];
+let val;
+taskCollector.addEventListener("input",()=>{
+val = taskCollector.value;//collecting the input value
+});
+
+const search = document.createElement("div");
+search.classList.add("search")
+
+const searchinput = document.createElement("input");
+searchinput.placeholder = "🔍search your tasks here";
+searchinput.classList.add("searchinput")
+searchinput.margin = "auto";
+search.appendChild(searchinput)
+body.appendChild(search)
+
+
+
+const taskcontainer = document.createElement("div");
+
+
+const add = document.getElementById("addbtn")
+add.addEventListener("click",(e)=>{
+e.preventDefault();
+if(val==""|| val == undefined){
+alert("please enter a value")
+return}
+div.innerText = ""
+div.classList.remove("notaskdiv")
+const taskCollector = document.getElementById("taskCollector");
+// console.log(taskarr);
+let priority = document.getElementById("Priority").value;//collecting the dropdown value
+let obj = {
+   task : val,
+   prio : priority,
+   hp : (priority=="High priority") 
+}
+taskarr.push(obj);
+
+
+createTask(val)
+
+val = ""
+taskCollector.value = ""
 })
 
 
-
-
-// console.log(temp.name);
-let priority = document.getElementsByName("priority");
-    let prival = ""
-    
-    Hpbtn.addEventListener("click",(e)=>{
-        if(input.value == "")
-        alert("enter a task")
-        else
-        e.target.classList.add('highlight');
-        hprad.checked = "true";
-        prival = "hp";
-        checkPri();
-
-        Mpbtn.classList.remove("highlight")
-        Lpbtn.classList.remove("highlight")
-    })
-    
-    
-    Mpbtn.addEventListener("click",(e)=>{
-       
-        if(input.value == ""){
-        alert("enter a task")
-       }
-       else{
-         e.target.classList.add("highlight");
-       }
-        mprad.checked = "true";
-        prival="mp";
-        checkPri();
-        
-        Hpbtn.classList.remove("highlight")
-        Lpbtn.classList.remove("highlight")
-        // console.log("mpchecked");
-    })
-    
-    
-    Lpbtn.addEventListener("click",(e)=>{
-        if(input.value == "")
-        alert("enter a task")
-        else
-        e.target.classList.add("highlight");
-        lprad.checked = "true";
-        prival= "lp";
-        checkPri();
-        
-        // console.log("lpchecked");
-        Mpbtn.classList.remove("highlight")
-        Hpbtn.classList.remove("highlight")
-    })
-     
-    
-    
-    let pval = "";
-   function checkPri(){
-   
-    if(prival=="hp")
-    pval = "hp";
-
-    else if(prival == "mp")
-    pval = "mp";
-    else if(prival == "lp")
-    pval = "lp";
-
-    temp.pri = pval;
-    let str = JSON.stringify(temp);
-    let fval = JSON.parse(str);
-    arr[i] = fval;
-    // let str = JSON.stringify(arr[i]);
-    // let fval = JSON.parse(str);
-    // arr[i].pri = pval;
-    // i++;
-   
+searchinput.addEventListener("input",()=>{
+   const searchTerm = searchinput.value.toLowerCase();
+   // console.log(searchTerm);
+   let filteredTasks = [];
+   taskarr.filter((tasks)=>{
+      taskcontainer.innerHTML = ""
+      if(tasks.task.toLowerCase().includes(searchTerm)){
+         filteredTasks.push(tasks)
+      }
+   })
+   addSearchedItems(filteredTasks) 
+   if(searchTerm === ""){
+      taskcontainer.innerHTML=""
+      addSearchedItems(taskarr)
+      return
    }
-    
-    
-    // console.log(temp);
-    // arr[i++] = temp;
-    // console.log(arr);
+})
+
+let i = 0;
+ function addSearchedItems(filteredTasks){
+   // console.log(filteredTasks);
+      for(let i = 0;i<filteredTasks.length;i++){
+         createTask(filteredTasks[i].task);
+      }
+   }
+function createTask(taskname){
+   const task = document.createElement("div");
+const tasktext = document.createElement("div");
+tasktext.innerText = taskname;
+tasktext.classList.add("tasktext");
+task.classList.add("task")
+
+const btndiv = document.createElement("div")
+btndiv.classList.add("btndiv")
+const editbtn = document.createElement("button");
+editbtn.classList.add("editbtn");
+let delbtn =document.createElement("button");
+task.appendChild(editbtn);
+editbtn.innerHTML = "EDIT"
+delbtn.classList.add("delbtn");
+delbtn.classList.add("delbtn"+i++)
+delbtn.innerHTML = "DELETE"
+btndiv.appendChild(editbtn);
+btndiv.appendChild(delbtn);
+task.appendChild(tasktext)
+task.appendChild(btndiv)
+taskcontainer.appendChild(task)
+body.appendChild(taskcontainer)
+}
+
+// let buttons = document.query 
+taskcontainer.addEventListener('click',(e)=>{
+   if (e.target.classList.contains('delbtn')) {
+      e.target.parentElement.parentElement.remove();}
+   else if (e.target.classList.contains('editbtn')) {
+      // console.log(e.target);
+      editTask(e.target);
+  }
+});
+
+function editTask(edittarget){
+ taskCollector.value = edittarget.parentElement.parentElement.firstChild.innerText;
+ val = edittarget.parentElement.parentElement.firstChild.innerText;
+ edittarget.parentElement.parentElement.remove();
+//  console.log(taskCollector.value);
+}

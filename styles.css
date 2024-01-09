@@ -1,134 +1,130 @@
+
 *{
+    margin:0;
+    padding:0;
     box-sizing: border-box;
-    margin: 0;
-    background-color: rgb(84, 79, 79);
 }
-header .logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.heading{
+    width: fit-content;
+    margin:0 auto;
+    font-weight:bolder;
+    font-size:xxx-large;
+    background: linear-gradient(to right, rgb(31, 31, 107),rgb(75, 162, 192),rgb(214, 94, 214),rgb(220, 107, 126)); 
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text; 
 }
-/* header{
+.form{
+    margin: 0 auto;
+    width: 60%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-} */
-header h1{
-    color: red;
+}
+#taskCollector{ 
+    height: 40px;
+    border-radius: 5px;
+    border: 3px solid rgb(31, 31, 107);
+    width:60%;
+    margin-right: 10px;
+}
+.addbtn{
+    margin-left: 10px;
+    width:20%;
+    border-radius:5px;
+    border: 3px solid rgb(31, 31, 107);
+    font-weight: 900;
+    font-size:medium;
+    background: linear-gradient(to right, rgb(31, 31, 107),rgb(75, 162, 192),rgb(214, 94, 214),rgb(220, 107, 126)); 
+    color:white;
+    
+}
+.addbtn:hover{
+    cursor: pointer;
+}
+select{
+    width:20%;
+    border-radius: 5px;
+    border:3px solid rgb(31, 31, 107);
+}
+.notaskdiv{
+    margin: 30px auto;
+    width:80%;
+    border: 1px solid black;
+    border-radius: 100px;
+    background: linear-gradient(to right, rgb(31, 31, 107),rgb(75, 162, 192),rgb(214, 94, 214),rgb(220, 107, 126)); 
     text-align: center;
-    padding: 2rem 0.5rem;
-    background: linear-gradient(to bottom, lightblue,purple);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-.header-task{
-    display: flex;
-    justify-content: center;
-}
-.header-task input{
-    border: none;
-    margin:0 0.5em;
-    max-width: 600px;
-    width: 90%;
-    border-radius:5px ;
-    background-color: rgb(96, 95, 95);
-    color: white;
-    font-size: 16px;
-    padding: 1rem;
-    /* cursor: pointer; */
-}
-.header-task input:hover{
-    cursor: pointer;
-}
-.header-task input::placeholder{
+    font-size: xx-large;
     color: white;
 }
-.addbtndiv{
+.task{
+    width:80%;
+    height: 50px;
+    /* background-color: green; */
+    border: 3px solid rgb(31,31,107);
+    border-radius: 10px;
+    /* padding: 1rem; */
+    margin: 1rem auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    overflow-x: hidden;
 }
-#addbtn{
-    border:none;
-    padding: 1rem;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor:pointer;
-    color: #fff;
-    background-color: rgb(98, 179, 206);
+.editbtn{
+  width:55px;
+  height:30px;
+  margin: 5px;
+  color: white;
+  font-weight: bolder;
+  border: 3px solid rgb(31,31,107);
+  border-radius: 5px;
+  background: linear-gradient(to right, rgb(31, 31, 107),rgb(75, 162, 192),rgb(214, 94, 214),rgb(220, 107, 126)); 
 }
-.search-block{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.search{
-    border: none;
-    border-radius:5px;
-    background-color: #fff;
-    width: 400px;
-    padding: 0.5rem;
-    margin: 1rem;
-}
-.search::placeholder{
-    font-size: 16px;
-}
-.priority{
-    margin: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.priority h3{
-    font-weight: 100;
-    color: #fff;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.priority button{
-    padding: 0.5rem;
-    background-color: rgb(98, 179, 206);
-    border: none;
-    border-radius:5px;
-    margin: 3px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-}
-.highlight{
-    border: 3px solid white !important;
-    font-size: 20px !important;
-}
-.no-task-block{
-    display: none !important;
-}
-#main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.taskblock{
-    background-color: #5c5b5b;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    padding: 1rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: larger;
+.delbtn{
+    width:55px;
+    height:30px;
     margin: 5px;
-    flex: 1 1 0;
-    width: 600px;
+    color: white;
+    font-weight: bolder;
+    border: 3px solid rgb(31,31,107);
+    border-radius: 5px;
+    background: linear-gradient(to right, rgb(31, 31, 107),rgb(75, 162, 192),rgb(214, 94, 214),rgb(220, 107, 126)); 
+  }
+.tasktext{
+    width: 55%;
+    overflow-x: auto; 
+    /* background-color: pink; */
+}
+.btndiv{
+    width: 30%;
+    /* background-color: yellow; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    /* border: 3px solid purple; */
 }
 .tasktext::-webkit-scrollbar{
     display: none;
 }
-.tasktext{
-    width: 85%;
-   
-    /* background-color: pink !important; */
-    overflow-x: auto;
-    /* color: green; */
+.search{
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchinput{
+    display: flex;
+    margin: 10px;
+    width: 60%;
+    padding: 0.5rem;
+    border: 3px solid rgb(31, 31, 107);
+    border-radius: 10px;
+}
+
+.addbtn:active{
+    width:20%;
+    animation-name: example;
+    animation-duration: 0.1s;
+}
+@keyframes example {
+    0%{font-size: medium;}
+    50%{ font-size: larger;}
+    100%{ font-size: medium;}
 }
