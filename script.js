@@ -40,11 +40,11 @@ div.innerText = ""
 div.classList.remove("notaskdiv")
 const taskCollector = document.getElementById("taskCollector");
 // console.log(taskarr);
-let priority = document.getElementById("Priority").value;//collecting the dropdown value
+// let priority = document.getElementById("Priority").value;//collecting the dropdown value
 let obj = {
    task : val,
-   prio : priority,
-   hp : (priority=="High priority") 
+   // prio : priority,
+   // hp : (priority=="High priority") 
 }
 taskarr.push(obj);
 
